@@ -72,7 +72,7 @@ font-size: 13px;
     -webkit-backdrop-filter: blur(12.9px);
     color: #303133;
     text-align: center;
-    padding: 2px 0; /* Reduced padding */
+    padding: 3px 0; /* Reduced padding */
     height: 30px; /* Reduced height */
     line-height: 4px; /* Vertically center the text */
 }
