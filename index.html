@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helezon Konveyör Hesaplama</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Dr._Oetker-Logo.svg/1280px-Dr._Oetker-Logo.svg.png" alt="Logo" width="80">
+        <h1>Helezon Konveyör Hesaplama</h1>
+    </header>
+
+    <div id="calculator">
+        <label for="selection">Lütfen Hangi Hesaplamayı Yapmak İstediğinizi Seçin</label>
+        <select id="selection" onchange="showForm()">
+            <option value="0">Seçiniz</option>
+            <option value="1">Helezon Konveyör Kapasite Hesabı</option>
+            <option value="2">Helezon Konveyörün Güç Hesabı</option>
+            <option value="3">Helezon Konveyörün Kanat Açım Hesabı</option>
+            <option value="4">Hacimsel İletim Kapasitesi - Iv</option>
+            <option value="5">Kütlesel İletim Kapasitesi - Im</option>
+        </select>
+
+        <div id="form-container"></div>
+        <button id="calculate-button">Hesapla</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
