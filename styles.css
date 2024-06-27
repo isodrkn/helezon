@@ -59,15 +59,22 @@ button:hover {
 }
 
 footer {
+font-size: 13px;
+    font-family: Helvetica, sans-serif;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #fff;
-    color: #000;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    color: #303133;
     text-align: center;
-    padding: 5px 0; /* Reduced padding */
+    padding: 2px 0; /* Reduced padding */
     height: 30px; /* Reduced height */
-    line-height: 30px; /* Vertically center the text */
+    line-height: 4px; /* Vertically center the text */
 }
 
 .footer-content {
