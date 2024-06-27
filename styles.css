@@ -31,6 +31,7 @@ header {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
 }
 
 label, select, input {
@@ -59,10 +60,8 @@ button:hover {
 }
 
 footer {
-font-size: 13px;
+    font-size: 13px;
     font-family: Helvetica, sans-serif;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.21);
@@ -74,7 +73,8 @@ font-size: 13px;
     text-align: center;
     padding: 3px 0; /* Reduced padding */
     height: 30px; /* Reduced height */
-    line-height: 4px; /* Vertically center the text */
+    line-height: 5px; /* Vertically center the text */
+    margin-top: auto; /* Push the footer to the bottom of the page */
 }
 
 .footer-content {
