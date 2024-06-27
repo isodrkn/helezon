@@ -307,7 +307,7 @@ function calculate() {
         const N = parseFloat(document.getElementById('N').value);
         const W2 = parseFloat(document.getElementById('W2').value);
 
-        result = 60 * W2 * Ro * Math.PI * ((D5**2 - d5**2) / 4) * N * S * 10**6 / 3600;
+        result = 60 * W2 * Ro * Math.PI * ((D5**2 - d5**2) / 4) * N * S5 * 10**6 / 3600;
     }
 
 
