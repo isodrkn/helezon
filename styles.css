@@ -9,7 +9,7 @@ body {
     background-position: center;
     background-attachment: fixed; /* Keeps the background fixed as the page scrolls */
     background-color: #e5e5f7; 
-    opacity: 0.8; 
+    opacity: 1; 
     background-image: radial-gradient(#444cf7 0.8px, #e5e5f7 0.8px); 
     background-size: 16px 16px;
 }
@@ -34,9 +34,6 @@ header {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
-    background-image: none;
-    background-color: none; 
-    background-size: 16px 16px;
 
 }
 
