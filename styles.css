@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh; /* Ensure body extends to at least full viewport height */
-    background-color: black;
+    background: black;
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Keeps the background fixed as the page scrolls */
