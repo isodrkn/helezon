@@ -7,7 +7,6 @@ body {
     align-items: center;
     min-height: 100vh; /* Ensure body extends to at least full viewport height */
     background-position: center;
-    background-attachment: fixed; /* Keeps the background fixed as the page scrolls */
     background-color: #e5e5f7; 
     opacity: 1; 
     background-image: radial-gradient(#444cf7 0.8px, #e5e5f7 0.8px); 
