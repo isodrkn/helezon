@@ -9,7 +9,7 @@ function showForm() {
         formContainer.innerHTML = `
             <h2>Helezon Konveyör Kapasite Hesabı</h2>
             <div class="form-group">
-                <label>A = Helezon kesit alanı (m^2):</label>
+                <label>A = Helezon kesit alanı (m²):</label>
                 <input type="number" id="A" step="any">
             </div>
             <div class="form-group">
@@ -25,24 +25,8 @@ function showForm() {
                 <input type="number" id="k" step="any">
             </div>
             <div class="form-group">
-                <label>P = Malzeme yoğunluğu:</label>
+                <label>P = Malzeme yoğunluğu (ton/m³):</label>
                 <input type="number" id="P" step="any">
-            </div>
-            <div class="form-group">
-                <label>D = Helezon kanadının dış çapı (m):</label>
-                <input type="number" id="D1" step="any">
-            </div>
-            <div class="form-group">
-                <label>d = Helezon milinin iç çapı (m):</label>
-                <input type="number" id="d1" step="any">
-            </div>
-            <div class="form-group">
-                <label>S = Helezon hatvesi (m):</label>
-                <input type="number" id="S" step="any">
-            </div>
-            <div class="form-group">
-                <label>N = Helezon devri (devir/dakika):</label>
-                <input type="number" id="N" step="any">
             </div>
         `;
     } else if (selection == '2') {
@@ -75,11 +59,11 @@ function showForm() {
             <label>Lütfen Bulmak İstediğiniz Birimi Seçin:</label>
             <select id="sub-selection" onchange="showSubForm()">
                 <option value="0">Seçiniz</option>
-                <option value="1">b = Helezon kanadının genişliği (mm)</option>
-                <option value="2">A = Helezonun bir kanat açımının dış çevresi</option>
-                <option value="3">a = Helezonun bir kanat açımının iç çevresi</option>
-                <option value="4">r = Helezonun kanat açımının iç radyüsü</option>
-                <option value="5">R = Helezonun kanat açımının dış radyüsü</option>
+                <option value="1">b = Helezon kanadının genişliği (m)</option>
+                <option value="2">A = Helezonun bir kanat açımının dış çevresi (m)</option>
+                <option value="3">a = Helezonun bir kanat açımının iç çevresi (m)</option>
+                <option value="4">r = Helezonun kanat açımının iç radyüsü (m)</option>
+                <option value="5">R = Helezonun kanat açımının dış radyüsü (m)</option>
                 <option value="6">Omega = Kanat açınımı kenarları arasındaki açı</option>
             </select>
             <div id="sub-form-container"></div>
@@ -199,16 +183,12 @@ function showSubForm() {
     } else if (subSelection == '6') {
         subFormContainer.innerHTML = `
             <div class="form-group">
-                <label>D = Helezonun dış çapı (m):</label>
-                <input type="number" id="D6" step="any">
+                <label>A = Helezonun bir kanadı açınımının dış çevresi (m):</label>
+                <input type="number" id="A1" step="any">
             </div>
             <div class="form-group">
-                <label>d = Helezonun mil çapı (m):</label>
-                <input type="number" id="d6" step="any">
-            </div>
-            <div class="form-group">
-                <label>S = Helezonun Hatvesi (m):</label>
-                <input type="number" id="S6" step="any">
+                <label>R = Helezonun bir kanadı açınımının dış radyüsü (m):</label>
+                <input type="number" id="R1" step="any">
             </div>
         `;
     }
@@ -224,13 +204,9 @@ function calculate() {
         const Delta = parseFloat(document.getElementById('Delta').value);
         const k = parseFloat(document.getElementById('k').value);
         const P = parseFloat(document.getElementById('P').value);
-        const D1 = parseFloat(document.getElementById('D1').value);
-        const d1 = parseFloat(document.getElementById('d1').value);
-        const S = parseFloat(document.getElementById('S').value);
-        const N = parseFloat(document.getElementById('N').value);
 
-        result = A * V * Delta * k * P * (D1 ** 2 - d1 ** 2) * S * N;
-        document.getElementById('result').textContent = result.toFixed(2) + ' m³/s';
+        result = A * V * Delta * k * P * 60;
+        document.getElementById('result').textContent = result.toFixed(2) + ' ton/saat';
     } else if (selection == '2') {
         const D2 = parseFloat(document.getElementById('D2').value);
         const L = parseFloat(document.getElementById('L').value);
@@ -238,8 +214,8 @@ function calculate() {
         const Q = parseFloat(document.getElementById('Q').value);
         const Mu = parseFloat(document.getElementById('Mu').value);
 
-        result = D2 * L * H * Q * Mu;
-        document.getElementById('result').textContent = result.toFixed(2) + ' kW';
+        result = (Q * ((Mu * L)+ H)/367)+ D2 * L/20;
+        document.getElementById('result').textContent = result.toFixed(9) + ' kW';
     } else if (selection == '3') {
         const subSelection = document.getElementById('sub-selection').value;
 
@@ -248,36 +224,35 @@ function calculate() {
             const d3 = parseFloat(document.getElementById('d3').value);
 
             result = D3 - d3;
-            document.getElementById('result').textContent = result.toFixed(2) + ' mm';
+            document.getElementById('result').textContent = result.toFixed(9) + ' m';
         } else if (subSelection == '2') {
             const D4 = parseFloat(document.getElementById('D4').value);
             const S2 = parseFloat(document.getElementById('S2').value);
 
             result = Math.PI * D4 * S2;
-            document.getElementById('result').textContent = result.toFixed(2) + ' m';
+            document.getElementById('result').textContent = result.toFixed(9) + ' m';
         } else if (subSelection == '3') {
             const d4 = parseFloat(document.getElementById('d4').value);
             const S3 = parseFloat(document.getElementById('S3').value);
 
             result = Math.PI * d4 * S3;
-            document.getElementById('result').textContent = result.toFixed(2) + ' m';
+            document.getElementById('result').textContent = result.toFixed(9) + ' m';
         } else if (subSelection == '4') {
             const d5 = parseFloat(document.getElementById('d5').value);
 
             result = d5 / 2;
-            document.getElementById('result').textContent = result.toFixed(2) + ' m';
+            document.getElementById('result').textContent = result.toFixed(9) + ' m';
         } else if (subSelection == '5') {
             const D5 = parseFloat(document.getElementById('D5').value);
 
             result = D5 / 2;
-            document.getElementById('result').textContent = result.toFixed(2) + ' m';
+            document.getElementById('result').textContent = result.toFixed(9) + ' m';
         } else if (subSelection == '6') {
-            const D6 = parseFloat(document.getElementById('D6').value);
-            const d6 = parseFloat(document.getElementById('d6').value);
-            const S6 = parseFloat(document.getElementById('S6').value);
+            const A1 = parseFloat(document.getElementById('A1').value);
+            const R1 = parseFloat(document.getElementById('R1').value);
 
-            result = 2 * Math.atan(S6 / (D6 - d6));
-            document.getElementById('result').textContent = result.toFixed(2) + ' rad';
+            result = (360 - ((360*A1)/(2 * Math.PI * R1)));
+            document.getElementById('result').textContent = result.toFixed(9) + ' rad';
         }
     } else if (selection == '4') {
         const D4 = parseFloat(document.getElementById('D4').value);
