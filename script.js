@@ -287,8 +287,8 @@ function calculate() {
         const N = parseFloat(document.getElementById('N').value);
         const k1 = parseFloat(document.getElementById('k1').value);
 
-        result = ((Math.PI * (D4 ** 2 - d4 ** 2)) / 4) * S4 * W * N * k1;
-        document.getElementById('result').textContent = result.toFixed(2) + ' m³/h';
+        result = ((Math.PI * (D4 ** 2 - d4 ** 2)) / 4) * S4 * W * N * k1/60;
+        document.getElementById('result').textContent = result.toFixed(9) + ' m³/s';
     } else if (selection == '5') {
         const D5 = parseFloat(document.getElementById('D5').value);
         const d5 = parseFloat(document.getElementById('d5').value);
@@ -297,7 +297,7 @@ function calculate() {
         const N = parseFloat(document.getElementById('N').value);
         const W2 = parseFloat(document.getElementById('W2').value);
 
-        result = (((Math.PI * (D5 ** 2 - d5 ** 2)) / 4) * S5 * Ro * N * W2) / 3600; // / 3600 to convert to ton/h
-        document.getElementById('result').textContent = result.toFixed(2) + ' ton/h';
+        result = 60*W2*Ro*(Math.PI*((D5**2-d5**2)/4))*N*S5*10**6/3600
+        document.getElementById('result').textContent = result.toFixed(9) + ' gr/s';
     }
 }
